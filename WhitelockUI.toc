@@ -1,0 +1,8 @@
+## Interface: 60000
+## Title: Whitlock's UI!!
+## Version: 0.1Beta
+## Notes: My new UI with
+## Author: Whitlock
+## DefaultState: enabled
+
+WhitelockUI.lua
