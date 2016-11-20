@@ -6,47 +6,45 @@ local function counter(...)
 	print(#arr);  --print the length of arr
 end
 
-local options = {
-	--Array Part
-    1, 2, 3, 4 , 5,
+local tbl = {
+	--index part:
+	"hello", 50, 40, 30, 20, "bye",
 
-	--Hash Part
-	["size"] = 10,
-	["xOffset"] = 10,
-	["yOffset"] = 10,
-	["color"] =  {r = 0.5, g = 0.2, b=0.6, a = 1},
-	class = "Warrior",
-
-	local function push(self, arg)
-		local  n = #self;       --Return Size Of self (a reference to the object)
-		self[n + 1] = arg;
-	end
-
-	pop = function(self)
-		local n = #self         --Return Size Of self (a reference to the object)
-		if (n > 0) then
-			local rtn = self[n];
-			self[n] = nil;
-			return rtn;
-		end
-	end
+	--hash table:
+	["hashValue_1"] = 100,
+	["hashValue_2"] = 200,
+	["hashValue_3"] = 300,
+	["hashValue_4"] = 400,
+	hashValue_5 = 500,
 }
 
+for key, value in ipairs(tbl) do   -- Only prints Array values.
+	print (key .. " : " .. value);
+end
+
+for key, value in pairs(tbl) do   -- print all values.
+	print (key .. " : " .. value);
+end
+
+print ("next val: " .. next(tbl))   --print 1
+print ("next val2: " .. next(tbl))  --print 1
+
+local value;
+local func, tbl, id = pairs(tbl);
+id, value = func(tbl, id);
+print (func(tbl, id+5));            --print the key and value from tbl in the form "key value", based on id.
+  
+--Print i in a while loop
+local i = 0;
+while (i <= 10) do 
+	i = i + 1;
+	print (i);
+end
 
 
-
-print (options:push(options, 50));  -- ':' after colon it knows its a function. Knows it's from the option table.
-print (options:push(4))
-
-print (options:pop(options));  -- ':' after colon it knows its a function. Knows it's from the option table.
-print (options:pop())
-print (options:pop())
-
-
-
-print(options["size"]);   --Print value from key "size"
-print(options.class); --Print the class 
-print(#options); --Get the length of the Array part, Not Hash. Return 4, since 4 items in array part.
+--print(options["size"]);   --Print value from key "size"
+--print(options.class); --Print the class 
+--print(#options); --Get the length of the Array part, Not Hash. Return 4, since 4 items in array part.
 
 --'Widget' is a table that acts as an object with its own methods and data.
 --frame:SetFrameStata("MEDIUM"); --This local var holds a reference to Blizzard's Frame Widget (frame)
