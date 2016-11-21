@@ -32,7 +32,6 @@ CreateFrame Arguments:
 UIConfig:SetSize(300, 360); -- width, height
 UIConfig:SetPoint("CENTER", UIParent, "CENTER", 100 , 100); -- point, relativeFrame, relativePoint, xOffset, yOffset
 
-
 --[[
 	"TOPLEFT"
 	"TOP"
@@ -43,6 +42,12 @@ UIConfig:SetPoint("CENTER", UIParent, "CENTER", 100 , 100); -- point, relativeFr
 	"BOTTOMLEFT"
 	"BOTTOM"
 	"BOTTOMRIGHT"
-
-
 ]]
+
+
+--UIConfig IS the parent frame for all other child frames and layered
+--  regions we will add on to it, to make it graphical!
+
+-- Child frames and regions:
+
+UIConfig.title = UIConfig:CreateFontString(nil, "OVERLAY");
