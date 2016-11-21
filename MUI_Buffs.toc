@@ -1,0 +1,8 @@
+## Interface: 62000
+## Title: |cff00ccffMUI|r Buffs
+## Author: Whitlock
+## DefaultState: enabled
+## SavedVariables: MUI_Buffs
+
+Templates.xml
+Core.lua
