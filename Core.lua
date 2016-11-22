@@ -51,3 +51,24 @@ UIConfig:SetPoint("CENTER", UIParent, "CENTER", 100 , 100); -- point, relativeFr
 -- Child frames and regions:
 
 UIConfig.title = UIConfig:CreateFontString(nil, "OVERLAY");
+UIConfig.title:SetFontObject("GameFontHighlight");
+UIConfig.title:setPoint("LEFT", UIConfig.TitleBg, "LEFT", 5, 0);   --Inherited from the TitleBg class.
+UIConfig.title:SetText("Whitlock's Buff Options");
+
+
+local successful = UIConfig.title:SetFont("Fonts\\FRIZQT__.ttf", 11, "OUTLINE");
+if (not successful) then
+	print "failed"
+end
+
+-- BUTTONS!!
+
+--UI Save Button:
+UIConfig.saveButton = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate");
+UIConfig.saveButton:setPoint("CENTER", UIConfig, "TOP", 0, -70);
+UIConfig.saveButton:setSize(140, 40);
+UIConfig.saveButton:setText("Save"); -- Directly communicates to the button's main FontString object
+UIConfig.saveButton:SetNormalFontObject("GameFontNormalLarge");
+UIConfig.saveButton:setHighlightFontObject("GameFontHighlightLarge");
+
+--UIConfig.saveButton:SetPushedFontObject("hello");   -- when mouse is pushed down.
