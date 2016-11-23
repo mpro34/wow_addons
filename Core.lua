@@ -13,8 +13,17 @@ for i = 1, NUM_CHAT_WINDOWS do
 end
 ----------------------------------------The above is used for Testing
 
-local UIConfig = CreateFrame("Frame", "MUI_BuffFrame_whitlock", UIParent, "BasicFrameTemplateWithInset");
+-- Creates a red button in the middle.
+mybutton = CreateFrame("Button","mybutton",UIParent,"UIPanelButtonTemplate")
+mybutton:SetPoint("CENTER",0,0)
+mybutton:SetWidth(50)
+mybutton:SetHeight(30)
 
+--  Creating the Frame.
+local frame = CreateFrame("Frame", "MUI_BuffFrame", UIParent, "BasicFrameTemplateWithInset");
+--The following is required to actually display the frame on the screen
+frame:SetSize(300, 360); -- width, height
+frame:SetPoint("CENTER", UIParent, "CENTER"); -- point, relativeFrame, relativePoint, xOffset, yOffset
 --[[
 CreateFrame Arguments:
 1. The type of frame - "Frame"
@@ -26,12 +35,6 @@ CreateFrame Arguments:
 	-I'm only using 1 XML template.
 
 ]]
-
-
---The following is required to actually display the frame on the screen
-UIConfig:SetSize(300, 360); -- width, height
-UIConfig:SetPoint("CENTER", UIParent, "CENTER", 100 , 100); -- point, relativeFrame, relativePoint, xOffset, yOffset
-
 --[[
 	"TOPLEFT"
 	"TOP"
@@ -49,26 +52,54 @@ UIConfig:SetPoint("CENTER", UIParent, "CENTER", 100 , 100); -- point, relativeFr
 --  regions we will add on to it, to make it graphical!
 
 -- Child frames and regions:
+--UIConfig.title = 
+--local textObject = frame:CreateFontString(nil, "OVERLAY");
+frame.title = frame:CreateFontString(nil, "OVERLAY");   --Create a FontString Region for the frame's title FontString attribute.
+frame.title:SetFontObject("GameFontHighlight");
+frame.title:SetPoint("LEFT", frame.TitleBg, "LEFT", 5, 0);  --Inherited from the TitleBg class.
+frame.title:SetText("MUI Buff Options - Custom");
 
-UIConfig.title = UIConfig:CreateFontString(nil, "OVERLAY");
-UIConfig.title:SetFontObject("GameFontHighlight");
-UIConfig.title:setPoint("LEFT", UIConfig.TitleBg, "LEFT", 5, 0);   --Inherited from the TitleBg class.
-UIConfig.title:SetText("Whitlock's Buff Options");
-
-
-local successful = UIConfig.title:SetFont("Fonts\\FRIZQT__.ttf", 11, "OUTLINE");
-if (not successful) then
-	print "failed"
-end
+--UIConfig:SetPoint("CENTER", UIParent, "CENTER"); -- point, relativeFrame, relativePoint, xOffset, yOffset
+--local successful = UIConfig.title:SetFont("Fonts\\FRIZQT__.ttf", 11, "OUTLINE");
+--if (not successful) then
+--	print "failed"
+--end
 
 -- BUTTONS!!
 
---UI Save Button:
-UIConfig.saveButton = CreateFrame("Button", nil, UIConfig, "GameMenuButtonTemplate");
-UIConfig.saveButton:setPoint("CENTER", UIConfig, "TOP", 0, -70);
-UIConfig.saveButton:setSize(140, 40);
-UIConfig.saveButton:setText("Save"); -- Directly communicates to the button's main FontString object
-UIConfig.saveButton:SetNormalFontObject("GameFontNormalLarge");
-UIConfig.saveButton:setHighlightFontObject("GameFontHighlightLarge");
+--UI Buttons:
+-- Creates a SAVE button at the top of the Parent Frame.
+frame.saveButton = CreateFrame("Button", nil, frame, "GameMenuButtonTemplate");
+frame.saveButton:SetPoint("CENTER", frame, "TOP", 0, -70);
+frame.saveButton:SetSize(140, 40);
+frame.saveButton:SetText("Save"); -- Directly communicates to the button's main FontString object
+frame.saveButton:SetNormalFontObject("GameFontNormalLarge");
+frame.saveButton:SetHighlightFontObject("GameFontHighlightLarge");
 
---UIConfig.saveButton:SetPushedFontObject("hello");   -- when mouse is pushed down.
+-- Creates a RESET button at the top of the Parent Frame.
+frame.resetBtn = CreateFrame("Button", nil, frame, "GameMenuButtonTemplate");
+frame.resetBtn:SetPoint("TOP", frame.saveButton, "BOTTOM", 0, -10);     --Position relative to saveButton.
+frame.resetBtn:SetSize(140, 40);
+frame.resetBtn:SetText("Reset"); -- Directly communicates to the button's main FontString object
+frame.resetBtn:SetNormalFontObject("GameFontNormalLarge");
+frame.resetBtn:SetHighlightFontObject("GameFontHighlightLarge");
+
+-- Creates a UI Load button at the top of the Parent Frame.
+frame.loadBtn = CreateFrame("Button", nil, frame, "GameMenuButtonTemplate");
+frame.loadBtn:SetPoint("TOP", frame.resetBtn, "BOTTOM", 0, -10);       --Position relative to resetBtn.
+frame.loadBtn:SetSize(140, 40);
+frame.loadBtn:SetText("Load"); -- Directly communicates to the button's main FontString object
+frame.loadBtn:SetNormalFontObject("GameFontNormalLarge");
+frame.loadBtn:SetHighlightFontObject("GameFontHighlightLarge");
+
+
+--Sliders:
+
+--Slider1:
+frame.slider1 = CreateFrame("Slider", nil, frame, "OptionsSliderTemplate");
+frame.slider1:SetPoint("TOP", frame.loadBtn, "BOTTOM", 0, -20);
+frame.slider1:SetMinMaxValues(1, 100);
+frame.slider1:SetValue(50);
+frame.slider1:SetValueStep(30);
+frame.slider1:SetObeyStepOnDrag(true);
+--frame.slider1:SetOrientation("VERTICAL");  If I want to change the orientation of the slider
