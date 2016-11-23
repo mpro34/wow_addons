@@ -1,5 +1,12 @@
+-- name, realm = UnitName("unit")
 print("hello there " .. UnitName("player") .. " - Level " .. UnitLevel("player"));  --Print the player's name.
---print("Your level is " .. Unit)
+
+-- minDamage, maxDamage, minOffHandDamage, maxOffHandDamage, physicalBonusPos, physicalBonusNeg, percent = UnitDamage("unit")
+print("My melee Damage: " .. UnitRangedDamage("player"));
+
+-- rangedAttackSpeed, minDamage, maxDamage, physicalBonusPos, physicalBonusNeg, percent = UnitRangedDamage("unit")
+print("My ranged Damage: " .. UnitRangedDamage("player"));  -- Options are party1 to party4 OR raid1 to raid40.
+
 
 local function counter(...)
 	local arr = {...};
@@ -33,17 +40,17 @@ local value;
 local func, tbl, id = pairs(tbl);
 id, value = func(tbl, id);
 print (func(tbl, id+5));            --print the key and value from tbl in the form "key value", based on id.
-  
+
 --Print i in a while loop
 local i = 0;
-while (i <= 10) do 
+while (i <= 10) do
 	i = i + 1;
 	print (i);
 end
 
 
 --print(options["size"]);   --Print value from key "size"
---print(options.class); --Print the class 
+--print(options.class); --Print the class
 --print(#options); --Get the length of the Array part, Not Hash. Return 4, since 4 items in array part.
 
 --'Widget' is a table that acts as an object with its own methods and data.
