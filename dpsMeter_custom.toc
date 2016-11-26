@@ -1,0 +1,9 @@
+## Interface: 63000
+## Title: |cff00ccffMUI|r DPS Meter
+## Author: Whitlock
+## DefaultState: enabled
+## SavedVariables: dpsMeter_custom
+
+Templates.xml
+events.lua
+Core.lua
