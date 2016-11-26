@@ -1,3 +1,13 @@
+-- minDamage, maxDamage, minOffHandDamage, maxOffHandDamage, physicalBonusPos, physicalBonusNeg, percent = UnitDamage("unit")
+ 
+	print("My melee Damage: " .. UnitRangedDamage("player"));
+
+
+-- rangedAttackSpeed, minDamage, maxDamage, physicalBonusPos, physicalBonusNeg, percent = UnitRangedDamage("unit")
+print("My ranged Damage: " .. UnitRangedDamage("player"));  -- Options are party1 to party4 OR raid1 to raid40.
+
+
+
 SLASH_RELOADUI1 = "/rl"  -- For quicker reloading
 SlashCmdList.RELOADUI = ReloadUI
 
@@ -14,16 +24,16 @@ end
 ----------------------------------------The above is used for Testing
 
 -- Creates a red button in the middle.
-mybutton = CreateFrame("Button","mybutton",UIParent,"UIPanelButtonTemplate")
-mybutton:SetPoint("CENTER",0,0)
-mybutton:SetWidth(50)
-mybutton:SetHeight(30)
+--mybutton = CreateFrame("Button","mybutton",UIParent,"UIPanelButtonTemplate")
+--mybutton:SetPoint("CENTER",0,0)
+--mybutton:SetWidth(50)
+--mybutton:SetHeight(30)
 
 --  Creating the Frame.
-local frame = CreateFrame("Frame", "MUI_BuffFrame", UIParent, "BasicFrameTemplateWithInset");
+--local frame = CreateFrame("Frame", "dpsDisplayFrame", UIParent, "BasicFrameTemplateWithInset");
 --The following is required to actually display the frame on the screen
-frame:SetSize(300, 360); -- width, height
-frame:SetPoint("CENTER", UIParent, "CENTER"); -- point, relativeFrame, relativePoint, xOffset, yOffset
+--frame:SetSize(300, 360); -- width, height
+--frame:SetPoint("CENTER", UIParent, "CENTER"); -- point, relativeFrame, relativePoint, xOffset, yOffset
 --[[
 CreateFrame Arguments:
 1. The type of frame - "Frame"
@@ -54,10 +64,12 @@ CreateFrame Arguments:
 -- Child frames and regions:
 --UIConfig.title = 
 --local textObject = frame:CreateFontString(nil, "OVERLAY");
+
+--[[
 frame.title = frame:CreateFontString(nil, "OVERLAY");   --Create a FontString Region for the frame's title FontString attribute.
 frame.title:SetFontObject("GameFontHighlight");
 frame.title:SetPoint("LEFT", frame.TitleBg, "LEFT", 5, 0);  --Inherited from the TitleBg class.
-frame.title:SetText("MUI Buff Options - Custom");
+frame.title:SetText("dps Meter - Custom");
 
 --UIConfig:SetPoint("CENTER", UIParent, "CENTER"); -- point, relativeFrame, relativePoint, xOffset, yOffset
 --local successful = UIConfig.title:SetFont("Fonts\\FRIZQT__.ttf", 11, "OUTLINE");
@@ -101,5 +113,5 @@ frame.slider1:SetPoint("TOP", frame.loadBtn, "BOTTOM", 0, -20);
 frame.slider1:SetMinMaxValues(1, 100);
 frame.slider1:SetValue(50);
 frame.slider1:SetValueStep(30);
-frame.slider1:SetObeyStepOnDrag(true);
+frame.slider1:SetObeyStepOnDrag(true);]]
 --frame.slider1:SetOrientation("VERTICAL");  If I want to change the orientation of the slider
